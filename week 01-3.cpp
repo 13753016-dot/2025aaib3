@@ -1,14 +1,15 @@
-// week01-4b.cpp ¨Ï¥Î C++ »y¨¥ ³B²z
-#include <iostream> // ¨Ï¥Î C++ »y¨¥ ¨ç¦¡®w
+// week01-4b.cpp ä½¿ç”¨ C++ èªè¨€ è™•ç†
+#include <iostream> // ä½¿ç”¨ C++ èªè¨€ å‡½å¼åº«
 using namespace std;
 int main()
 {
     int a, b;
-    cin >> a >> b;   // C++»y¨¥ Åª¸ê®Æ
+    cin >> a >> b;   // C++èªè¨€ è®€è³‡æ–™
     int ans = 0;
     for (int i = a; i <= b; i++) {
         if (i % 3 == 0) ans += i;
     }
-    cout << ans;  // C++»y¨¥ ¿é¸ê®Æ
+    cout << ans;  //  C++èªè¨€ è¼¸è³‡æ–™
 }
+
 
