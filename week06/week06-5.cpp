@@ -1,0 +1,24 @@
+// week06-5.cpp 今天的LeetCode挑戰題，有金幣
+// 3350. Adjacent Increasing Subarrays Detection II
+// 題目跟昨天的 3349 很像，昨天的你只要問你「是不是可能的結果」
+// 3349 用 combo，今天 3350 用兩個 combo 左到右、右到左，累積多少
+class Solution {
+public:
+    int maxIncreasingSubarrays(vector<int>& nums) {
+        int N = nums.size(); // 陣列的大小
+        vector<int> left(N, 1);  // 左到右的 combo
+        vector<int> right(N, 1); // 右到左的 combo
+        for(int i = 1; i < N; i++) { // 左到右的 combo 逐一更新
+            if(nums[i-1] < nums[i]) left[i] = left[i-1] + 1;
+        } // 如果有連續，就更新，變更大
+        for(int i = N-2; i >= 0; i--) { // 右到左的 combo 逐一更新
+            if(nums[i] < nums[i+1]) right[i] = right[i+1] + 1;
+        }
+        int ans = 0; // 要找到最大的 k，也就是「兩個相鄰陣列」要持續增加的最長長度 k
+        for(int i = 0; i < N-1; i++) {
+            int now = min(left[i], right[i+1]); // 現在這格左邊 combo 右邊 combo 都符合
+            if(now > ans) ans = now; // 有更大的 k，就用來更新 ans
+        }
+        return ans;
+    }
+};
